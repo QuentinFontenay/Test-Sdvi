@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Test des pizzeria{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <script src="https://use.fontawesome.com/7e065ddf26.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Exo|Indie+Flower" rel="stylesheet">
+    {{ encore_entry_link_tags('app') }}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+<header class="container">
+    <h1><span class="tp-ita-1">Les pizzé</span><span class="tp-ita-2">rias de no</span><span class="tp-ita-3">s régions</span></h1>
+    <nav>
+        <a href="{{ path("app_index_index") }}" class="tp-icone-blk">
+            <i class="fa fa-home" aria-hidden="true"></i>
+            <span>Menu</span>
+        </a>
+        <a href="{{ path("app_pizzeria_liste") }}" class="tp-icone-blk">
+            <i class="fa fa-list" aria-hidden="true"></i>
+            <span>Pizzérias</span>
+        </a>
+        <a href="{{ path("app_pizzaiolo_disponibles") }}" class="tp-icone-blk">
+            <i class="fa fa-users" aria-hidden="true"></i>
+            <span>Pizzaïolos</span>
+        </a>
+        <a href="{{ path("app_pizza_liste") }}" class="tp-icone-blk">
+            <i class="fa fa-cutlery" aria-hidden="true"></i>
+            <span>Pizzas</span>
+        </a>
+    </nav>
+</header>
+<div class="container tp-main">
+    <h2>{% block titrePage %}{% endblock %}</h2>
+
+    <div class="tp-main-body">
+        {% block body %}{% endblock %}
+    </div>
+</div>
+{% block javascripts %}{% endblock %}
+</body>
+</html>

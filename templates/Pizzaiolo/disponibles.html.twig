@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Liste des pizzaïolos disponibles{% endblock %}
+
+{% block titrePage %}
+    Les pizzaïolos disponibles
+{% endblock %}
+
+{% block body %}
+    <table>
+        <tr>
+            <th></th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>N° sécurité social</th>
+        </tr>
+        {% for pizzaiolo in pizzaiolos %}
+            <tr>
+                <td>
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                </td>
+                <td>{{ pizzaiolo.nom }}</td>
+                <td>{{ pizzaiolo.prenom }}</td>
+                <td>{{ pizzaiolo.numeroSecu }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+

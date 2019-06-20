@@ -1,0 +1,35 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Liste des pizzaïolos{% endblock %}
+
+{% block titrePage %}
+    Les pizzaïolos
+{% endblock %}
+
+{% block body %}
+    <table>
+        <tr>
+            <th></th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>N° sécurité social</th>
+            <th>Employeur</th>
+        </tr>
+        {% for pizzaiolo in pizzaiolos %}
+            <tr>
+                <td>
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                </td>
+                <td>{{ pizzaiolo.nom }}</td>
+                <td>{{ pizzaiolo.prenom }}</td>
+                <td>{{ pizzaiolo.numeroSecu }}</td>
+                <td>
+                    {% if pizzaiolo.employeur %}
+                        {{ pizzaiolo.employeur.nom }}
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+

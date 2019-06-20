@@ -1,0 +1,20 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Liste des pizzas{% endblock %}
+
+{% block titrePage %}
+    Les pizzas disponibles
+{% endblock %}
+
+{% block body %}
+    <div class="tp-pizzas">
+        {% for pizza in pizzas %}
+            <div class="tp-pizza-listing">
+                <a href="{{ path("app_pizza_detail", {"pizzaId": pizza.id}) }}">
+                    <i class="fa fa-caret-square-o-right tp-link" aria-hidden="true"></i>
+                    <span>{{ pizza.nom }}</span>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
