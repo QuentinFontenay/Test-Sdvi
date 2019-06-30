@@ -46,4 +46,30 @@ class PizzaDao
         // appel à la méthode du répository et renvoi du résultat
         return $this->repository->findPizzaAvecDetailComplet($pizzaId);
     }
+    /**
+     * @return array
+     */
+     public function GetPrixFabrication(int $pizzaId) : float
+     {
+       $couttotal = 0;
+       $detail_pizzas = $this->repository->findPizzaAvecDetailComplet($pizzaId);
+       $cout = array();
+       $cout2 = array();
+       $cout3 = array();
+       $mesIngredients = $detail_pizzas->getQuantiteIngredients();
+       foreach ($mesIngredients as $ingredient)
+       {
+         array_push($cout, ($ingredient->convertirGrammeEnKilo($ingredient->getQuantite())));
+         array_push($cout2, ($ingredient->getIngredient()));
+       }
+       foreach ($cout2 as $value)
+       {
+         array_push($cout3, ($value->getCout()));
+       }
+       for ($i = 0; $i < count($cout) && $i < count($cout3); $i++)
+       {
+         $couttotal = $couttotal + ($cout[$i] * $cout3[$i]);
+       }
+       return $couttotal;
+     }
 }

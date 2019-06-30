@@ -6,6 +6,8 @@ declare(strict_types = 1);
 namespace App\Controller;
 
 use App\Service\Dao\PizzeriaDao;
+use App\Service\Dao\PizzaDao;
+use App\Entity\Pizza;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -39,8 +41,27 @@ class PizzeriaController extends AbstractController
      * )
      * @return Response
      */
-    public function detailAction($pizzeriaId): Response
+    public function detailAction(int $pizzeriaId, PizzeriaDao $pizzeriaDao, PizzaDao $pizzaDao): Response
     {
+        $pizzas = $pizzaDao->getAllPizzas();
+        $cout = array();
+        $nom_pizza = array();
+        $prix = array();
+        $detail_pizzeria = $pizzeriaDao->getCartePizzeria($pizzeriaId);
+        $mesPizzas = $detail_pizzeria->getPizzas();
+        $Marge = $detail_pizzeria->getMarge();
+        foreach ($mesPizzas as $key) {
+          array_push($cout, $key->getId());
+          array_push($nom_pizza, $key->getNom());
+        }
+        for ($i=0; $i < count($cout); $i++) {
+          $prix[$i] = $pizzaDao->getPrixFabrication($cout[$i]) + $Marge;
+        }
+        return $this->render("Pizzeria/carte.html.twig", [
+            "pizzerias" => $detail_pizzeria,
+            "prix" => $prix,
+            "nom_pizza" => $nom_pizza,
+        ]);
         return new Response("Carte de la pizzéria {$pizzeriaId}");
     }
 }

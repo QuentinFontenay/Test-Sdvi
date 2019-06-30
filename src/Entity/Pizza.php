@@ -20,16 +20,20 @@ class Pizza
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    private $id_pizza;
 
     /**
      * @var string
-     * @ORM\Column(name="nom", type="string", length=255, unique=true)
+     * @ORM\Column(name="nom", type="string", length=191, unique=true)
      */
     private $nom;
 
     /**
-     * @var Collection
+     * @ORM\ManyToMany(targetEntity="App\Entity\IngredientPizza")
+     * @ORM\JoinTable(name="pizza_ingredientpizza",
+     *      joinColumns={@ORM\JoinColumn(name="pizza", referencedColumnName="id_pizza")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="ingredientpizza", referencedColumnName="id_ingredient_pizza", unique=true)}
+     *      )
      */
     private $quantiteIngredients;
 
@@ -38,6 +42,7 @@ class Pizza
      */
     public function __construct()
     {
+        $this->pizzerias = new ArrayCollection();
         $this->quantiteIngredients = new ArrayCollection();
     }
 
@@ -46,16 +51,16 @@ class Pizza
      */
     public function getId(): ?int
     {
-        return $this->id;
+        return $this->id_pizza;
     }
 
     /**
-     * @param int $id
+     * @param int $id_pizza
      * @return Pizza
      */
-    public function setId(int $id): Pizza
+    public function setId(int $id_pizza): Pizza
     {
-        $this->id = $id;
+        $this->id_pizza = $id_pizza;
 
         return $this;
     }
@@ -80,29 +85,28 @@ class Pizza
     }
 
     /**
-     * @param IngredientPizza $quantiteIngredients
-     * @return Pizza
+     * @return Collection
      */
+    public function getQuantiteIngredients(): Collection
+    {
+        return $this->quantiteIngredients;
+    }
+
+    /**
+    * @param IngredientPizza $quantiteIngredients
+    * @return Pizza
+    */
     public function addQuantiteIngredients(IngredientPizza $quantiteIngredients): Pizza
     {
         $this->quantiteIngredients[] = $quantiteIngredients;
-
         return $this;
     }
 
     /**
      * @param IngredientPizza $quantiteIngredients
      */
-    public function removeQuantiteIngredient(IngredientPizza $quantiteIngredients): void
+    public function removeQuantiteIngredients(IngredientPizza $quantiteIngredients): void
     {
-        $this->quantiteIngredients->removeElement($quantiteIngredients);
-    }
-
-    /**
-     * @return Collection
-     */
-    public function getQuantiteIngredients(): Collection
-    {
-        return $this->quantiteIngredients;
+      $this->quantiteIngredients->removeElement($quantiteIngredients);
     }
 }

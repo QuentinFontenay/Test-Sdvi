@@ -1,9 +1,11 @@
 {% extends "base.html.twig" %}
 
 {% block title %}{% endblock %}
-
-{% block titrePage %}{% endblock %}
-
+{% block titrePage %}<h2 style="text-align: center;"> la pizza {{ pizzas.nom}}</h2>{% endblock %}
 {% block body %}
-    Le détail de la pizza sélectionnée
+<h3>Ingredient:<h3>
+{% for ingredients in pizzas.quantiteIngredients %}
+<span>{{ ingredients.ingredient.nom }},</span>
+{% endfor %}
+<h3>Prix de Fabrication: {{prix_fabrication|number_format(2)}}</h3>
 {% endblock %}

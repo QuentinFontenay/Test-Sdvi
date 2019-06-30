@@ -33,19 +33,16 @@ class PizzaRepository extends ServiceEntityRepository
         if (!is_numeric($pizzaId) || $pizzaId <= 0) {
             throw new \Exception("Impossible de d'obtenir le détail de la pizza ({$pizzaId}).");
         }
-
         // création du query builder avec l'alias p pour pizza
         $qb = $this->createQueryBuilder("p");
-
         // création de la requête
         $qb
             ->addSelect(["qte", "ing"])
             ->innerJoin("p.quantiteIngredients", "qte")
             ->innerJoin("qte.ingredient", "ing")
-            ->where("p.id = :idPizza")
+            ->where("p.id_pizza = :idPizza")
             ->setParameter("idPizza", $pizzaId)
         ;
-
         // exécution de la requête
         return $qb->getQuery()->getSingleResult();
     }

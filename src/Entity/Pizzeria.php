@@ -20,11 +20,11 @@ class Pizzeria
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    private $id_pizzeria;
 
     /**
      * @var string
-     * @ORM\Column(name="nom", type="string", length=255, unique=true)
+     * @ORM\Column(name="nom", type="string", length=191, unique=true)
      */
     private $nom;
 
@@ -43,21 +43,31 @@ class Pizzeria
 
     /**
      * @var Collection
+     * @ORM\OneToMany(targetEntity="App\Entity\Pizzaiolo", mappedBy="employeur")
+     * @ORM\JoinColumn(
+     *     name="pizzaiolo_id",
+     *     referencedColumnName="id_pizzaiolo"
+     * )
      */
-    private $pizzas;
+    private $pizzaiolos;
 
     /**
      * @var Collection
+     * @ORM\ManyToMany(targetEntity="App\Entity\Pizza")
+     * @ORM\JoinTable(name="pizzeria_pizza",
+     *      joinColumns={@ORM\JoinColumn(name="pizzeria", referencedColumnName="id_pizzeria")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="pizza", referencedColumnName="id_pizza")}
+     *      )
      */
-    private $pizzaiolos;
+    private $pizzas;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->pizzas = new ArrayCollection();
         $this->pizzaiolos = new ArrayCollection();
+        $this->pizzas = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -65,16 +75,16 @@ class Pizzeria
      */
     public function getId(): ?int
     {
-        return $this->id;
+        return $this->id_pizzeria;
     }
 
     /**
-     * @param int $id
+     * @param int $idPizzeria
      * @return Pizzeria
      */
-    public function setId(int $id): Pizzeria
+    public function setId(int $id_pizzeria): Pizzeria
     {
-        $this->id = $id;
+        $this->id_pizzeria = $id_pizzeria;
 
         return $this;
     }
@@ -135,34 +145,6 @@ class Pizzeria
 
         return $this;
     }
-
-    /**
-     * @param Pizza $pizza
-     * @return Pizzeria
-     */
-    public function addPizza(Pizza $pizza): Pizzeria
-    {
-        $this->pizzas[] = $pizza;
-
-        return $this;
-    }
-
-    /**
-     * @param Pizza $pizza
-     */
-    public function removePizza(Pizza $pizza): void
-    {
-        $this->pizzas->removeElement($pizza);
-    }
-
-    /**
-     * @return Collection
-     */
-    public function getPizzas() :Collection
-    {
-        return $this->pizzas;
-    }
-
     /**
      * @param Pizzaiolo $pizzaiolo
      * @return Pizzeria
@@ -188,5 +170,37 @@ class Pizzeria
     public function getPizzaiolos() :Collection
     {
         return $this->pizzaiolos;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getPizzas(): Collection
+    {
+        return $this->pizzas;
+    }
+    /**
+    * @param Pizza $pizza
+    * @return Pizzeria
+    */
+    public function addPizza(Pizza $pizza): Pizzeria
+    {
+        if (!$this->pizzas->contains($pizza)) {
+            $this->pizzas[] = $pizza;
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param Pizza $pizza
+     */
+    public function removePizza(Pizza $pizza): self
+    {
+        if ($this->pizzas->contains($pizza)) {
+            $this->pizzas->removeElement($pizza);
+        }
+
+        return $this;
     }
 }

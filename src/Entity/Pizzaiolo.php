@@ -22,19 +22,19 @@ class Pizzaiolo
 
     /**
      * @var string
-     * @ORM\Column(name="nom", type="string", length=255)
+     * @ORM\Column(name="nom", type="string", length=191)
      */
     private $nom;
 
     /**
      * @var string
-     * @ORM\Column(name="prenom", type="string", length=255)
+     * @ORM\Column(name="prenom", type="string", length=191)
      */
     private $prenom;
 
     /**
      * @var string
-     * @ORM\Column(name="numero_secu", type="string", length=255, unique=true)
+     * @ORM\Column(name="numero_secu", type="string", length=191, unique=true)
      */
     private $numeroSecu;
 

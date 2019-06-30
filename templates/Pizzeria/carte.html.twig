@@ -1,1 +1,20 @@
+{% extends "base.html.twig" %}
 
+{% block title %}{% endblock %}
+{% block titrePage %}<h2 style="text-align: center;"> la carte {{ pizzerias.nom}}</h2>{% endblock %}
+{% block body %}
+<table>
+    <tr>
+        <th>Pizza</th>
+        <th>Prix</th>
+        <th></th>
+    </tr>
+        <tr>
+          {% for i in 0..prix|length - 1 %}
+            <td>{{ nom_pizza[i]}}</td>
+                <td>{{prix[i]|number_format(2)}}€</td>
+            <td><i class="fa fa-phone" aria-hidden="true"></i></td>
+        </tr>
+        {% endfor %}
+</table>
+{% endblock %}

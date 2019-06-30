@@ -21,7 +21,7 @@ class IngredientPizza
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    private $id_ingredient_pizza;
 
     /**
      * La quanité de l'ingrédient en gramme
@@ -54,16 +54,16 @@ class IngredientPizza
      */
     public function getId(): ?int
     {
-        return $this->id;
+        return $this->id_ingredient_pizza;
     }
 
     /**
-     * @param int $id
+     * @param int $id_ingredient_pizza
      * @return IngredientPizza
      */
-    public function setId(int $id): IngredientPizza
+    public function setId(int $id_ingredient_pizza): IngredientPizza
     {
-        $this->id = $id;
+        $this->id_ingredient_pizza = $id_ingredient_pizza;
 
         return $this;
     }

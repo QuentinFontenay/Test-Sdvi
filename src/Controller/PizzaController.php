@@ -29,7 +29,6 @@ class PizzaController extends AbstractController
             "pizzas" => $pizzas,
         ]);
     }
-
     /**
      * @param int $pizzaId
      * @Route(
@@ -38,8 +37,13 @@ class PizzaController extends AbstractController
      * )
      * @return Response
      */
-    public function detailAction(int $pizzaId): Response
+    public function detailAction(int $pizzaId, PizzaDao $pizzaDao): Response
     {
-        return $this->render("Pizza/detail.html.twig");
+      $detail_pizzas = $pizzaDao->getDetailPizza($pizzaId);
+      $prix = $pizzaDao->getPrixFabrication($pizzaId);
+      return $this->render("Pizza/detail.html.twig", [
+          "pizzas" => $detail_pizzas,
+          "prix_fabrication" => $prix,
+      ]);
     }
 }
