@@ -44,18 +44,18 @@ class PizzeriaController extends AbstractController
     public function detailAction(int $pizzeriaId, PizzeriaDao $pizzeriaDao, PizzaDao $pizzaDao): Response
     {
         $pizzas = $pizzaDao->getAllPizzas();
-        $cout = array();
+        $id_pizza = array();
         $nom_pizza = array();
         $prix = array();
         $detail_pizzeria = $pizzeriaDao->getCartePizzeria($pizzeriaId);
         $mesPizzas = $detail_pizzeria->getPizzas();
         $Marge = $detail_pizzeria->getMarge();
         foreach ($mesPizzas as $key) {
-          array_push($cout, $key->getId());
+          array_push($id_pizza, $key->getId());
           array_push($nom_pizza, $key->getNom());
         }
-        for ($i=0; $i < count($cout); $i++) {
-          $prix[$i] = $pizzaDao->getPrixFabrication($cout[$i]) + $Marge;
+        for ($i=0; $i < count($id_pizza); $i++) {
+          $prix[$i] = $pizzaDao->getPrixFabrication($id_pizza[$i]) + $Marge;
         }
         return $this->render("Pizzeria/carte.html.twig", [
             "pizzerias" => $detail_pizzeria,

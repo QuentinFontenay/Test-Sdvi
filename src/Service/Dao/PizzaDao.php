@@ -53,22 +53,22 @@ class PizzaDao
      {
        $couttotal = 0;
        $detail_pizzas = $this->repository->findPizzaAvecDetailComplet($pizzaId);
-       $cout = array();
-       $cout2 = array();
-       $cout3 = array();
+       $quantite = array();
+       $liste_ingredient = array();
+       $prix_ingredient = array();
        $mesIngredients = $detail_pizzas->getQuantiteIngredients();
        foreach ($mesIngredients as $ingredient)
        {
-         array_push($cout, ($ingredient->convertirGrammeEnKilo($ingredient->getQuantite())));
-         array_push($cout2, ($ingredient->getIngredient()));
+         array_push($quantite, ($ingredient->convertirGrammeEnKilo($ingredient->getQuantite())));
+         array_push($liste_ingredient, ($ingredient->getIngredient()));
        }
-       foreach ($cout2 as $value)
+       foreach ($liste_ingredient as $value)
        {
-         array_push($cout3, ($value->getCout()));
+         array_push($prix_ingredient, ($value->getCout()));
        }
-       for ($i = 0; $i < count($cout) && $i < count($cout3); $i++)
+       for ($i = 0; $i < count($quantite) && $i < count($prix_ingredient); $i++)
        {
-         $couttotal = $couttotal + ($cout[$i] * $cout3[$i]);
+         $couttotal = $couttotal + ($quantite[$i] * $prix_ingredient[$i]);
        }
        return $couttotal;
      }
