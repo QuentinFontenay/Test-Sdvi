@@ -106,7 +106,8 @@ class __TwigTemplate_a2cbe4980b40289289f5e24d42672c4dbb04b34224448967f3a51687471
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        echo "<table>
+        echo "<div class=\"table-responsive\">
+<table>
     <tr>
         <th>Pizza</th>
         <th>Prix</th>
@@ -114,17 +115,17 @@ class __TwigTemplate_a2cbe4980b40289289f5e24d42672c4dbb04b34224448967f3a51687471
     </tr>
         <tr>
           ";
-        // line 13
+        // line 14
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(range(0, (twig_length_filter($this->env, (isset($context["prix"]) || array_key_exists("prix", $context) ? $context["prix"] : (function () { throw new RuntimeError('Variable "prix" does not exist.', 13, $this->source); })())) - 1)));
+        $context['_seq'] = twig_ensure_traversable(range(0, (twig_length_filter($this->env, (isset($context["prix"]) || array_key_exists("prix", $context) ? $context["prix"] : (function () { throw new RuntimeError('Variable "prix" does not exist.', 14, $this->source); })())) - 1)));
         foreach ($context['_seq'] as $context["_key"] => $context["i"]) {
-            // line 14
+            // line 15
             echo "            <td>";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["nom_pizza"]) || array_key_exists("nom_pizza", $context) ? $context["nom_pizza"] : (function () { throw new RuntimeError('Variable "nom_pizza" does not exist.', 14, $this->source); })()), $context["i"], [], "array", false, false, false, 14), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["nom_pizza"]) || array_key_exists("nom_pizza", $context) ? $context["nom_pizza"] : (function () { throw new RuntimeError('Variable "nom_pizza" does not exist.', 15, $this->source); })()), $context["i"], [], "array", false, false, false, 15), "html", null, true);
             echo "</td>
                 <td>";
-            // line 15
-            echo twig_escape_filter($this->env, twig_number_format_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["prix"]) || array_key_exists("prix", $context) ? $context["prix"] : (function () { throw new RuntimeError('Variable "prix" does not exist.', 15, $this->source); })()), $context["i"], [], "array", false, false, false, 15), 2), "html", null, true);
+            // line 16
+            echo twig_escape_filter($this->env, twig_number_format_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["prix"]) || array_key_exists("prix", $context) ? $context["prix"] : (function () { throw new RuntimeError('Variable "prix" does not exist.', 16, $this->source); })()), $context["i"], [], "array", false, false, false, 16), 2), "html", null, true);
             echo "€</td>
             <td><i class=\"fa fa-phone\" aria-hidden=\"true\"></i></td>
         </tr>
@@ -133,8 +134,9 @@ class __TwigTemplate_a2cbe4980b40289289f5e24d42672c4dbb04b34224448967f3a51687471
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['i'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 19
+        // line 20
         echo "</table>
+</div>
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -156,7 +158,7 @@ class __TwigTemplate_a2cbe4980b40289289f5e24d42672c4dbb04b34224448967f3a51687471
 
     public function getDebugInfo()
     {
-        return array (  137 => 19,  127 => 15,  122 => 14,  118 => 13,  109 => 6,  99 => 5,  78 => 4,  60 => 3,  37 => 1,);
+        return array (  138 => 20,  128 => 16,  123 => 15,  119 => 14,  109 => 6,  99 => 5,  78 => 4,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -166,6 +168,7 @@ class __TwigTemplate_a2cbe4980b40289289f5e24d42672c4dbb04b34224448967f3a51687471
 {% block title %}{% endblock %}
 {% block titrePage %}<h2 style=\"text-align: center;\"> la carte {{ pizzerias.nom}}</h2>{% endblock %}
 {% block body %}
+<div class=\"table-responsive\">
 <table>
     <tr>
         <th>Pizza</th>
@@ -180,6 +183,7 @@ class __TwigTemplate_a2cbe4980b40289289f5e24d42672c4dbb04b34224448967f3a51687471
         </tr>
         {% endfor %}
 </table>
+</div>
 {% endblock %}
 ", "Pizzeria/carte.html.twig", "/home/quentin/Documents/Cours_Symfony/Test-Sdvi/templates/Pizzeria/carte.html.twig");
     }

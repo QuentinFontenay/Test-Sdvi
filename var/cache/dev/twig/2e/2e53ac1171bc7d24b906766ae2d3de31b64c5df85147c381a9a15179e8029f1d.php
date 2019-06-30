@@ -49,22 +49,27 @@ class __TwigTemplate_269949c0d7959fa69ce05bb2b712c05607943da173bde46a2d0c9eef2ab
 <html>
 <head>
     <meta charset=\"UTF-8\" />
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
     <title>";
-        // line 5
+        // line 6
         $this->displayBlock('title', $context, $blocks);
         echo "</title>
     ";
-        // line 6
-        $this->displayBlock('stylesheets', $context, $blocks);
         // line 7
+        $this->displayBlock('stylesheets', $context, $blocks);
+        // line 8
         echo "    <script src=\"https://use.fontawesome.com/7e065ddf26.js\"></script>
+    <script src=\"https://code.jquery.com/jquery-3.3.1.slim.min.js\" integrity=\"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo\" crossorigin=\"anonymous\"></script>
+    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js\" integrity=\"sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1\" crossorigin=\"anonymous\"></script>
+    <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js\" integrity=\"sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM\" crossorigin=\"anonymous\"></script>
     <link href=\"https://fonts.googleapis.com/css?family=Exo|Indie+Flower\" rel=\"stylesheet\">
+    <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\" integrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\">
     ";
-        // line 9
+        // line 14
         echo $this->extensions['Symfony\WebpackEncoreBundle\Twig\EntryFilesTwigExtension']->renderWebpackLinkTags("app");
         echo "
     <link rel=\"icon\" type=\"image/x-icon\" href=\"";
-        // line 10
+        // line 15
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("favicon.ico"), "html", null, true);
         echo "\" />
 </head>
@@ -73,28 +78,28 @@ class __TwigTemplate_269949c0d7959fa69ce05bb2b712c05607943da173bde46a2d0c9eef2ab
     <h1><span class=\"tp-ita-1\">Les pizzé</span><span class=\"tp-ita-2\">rias de no</span><span class=\"tp-ita-3\">s régions</span></h1>
     <nav>
         <a href=\"";
-        // line 16
+        // line 21
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_index_index");
         echo "\" class=\"tp-icone-blk\">
             <i class=\"fa fa-home\" aria-hidden=\"true\"></i>
             <span>Menu</span>
         </a>
         <a href=\"";
-        // line 20
+        // line 25
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_pizzeria_liste");
         echo "\" class=\"tp-icone-blk\">
             <i class=\"fa fa-list\" aria-hidden=\"true\"></i>
             <span>Pizzérias</span>
         </a>
         <a href=\"";
-        // line 24
+        // line 29
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_pizzaiolo_disponibles");
         echo "\" class=\"tp-icone-blk\">
             <i class=\"fa fa-users\" aria-hidden=\"true\"></i>
             <span>Pizzaïolos</span>
         </a>
         <a href=\"";
-        // line 28
+        // line 33
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_pizza_liste");
         echo "\" class=\"tp-icone-blk\">
             <i class=\"fa fa-cutlery\" aria-hidden=\"true\"></i>
@@ -104,21 +109,21 @@ class __TwigTemplate_269949c0d7959fa69ce05bb2b712c05607943da173bde46a2d0c9eef2ab
 </header>
 <div class=\"container tp-main\">
     <h2>";
-        // line 35
+        // line 40
         $this->displayBlock('titrePage', $context, $blocks);
         echo "</h2>
 
     <div class=\"tp-main-body\">
         ";
-        // line 38
+        // line 43
         $this->displayBlock('body', $context, $blocks);
-        // line 39
+        // line 44
         echo "    </div>
 </div>
 ";
-        // line 41
+        // line 46
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 42
+        // line 47
         echo "</body>
 </html>
 ";
@@ -130,7 +135,7 @@ class __TwigTemplate_269949c0d7959fa69ce05bb2b712c05607943da173bde46a2d0c9eef2ab
 
     }
 
-    // line 5
+    // line 6
     public function block_title($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -149,7 +154,7 @@ class __TwigTemplate_269949c0d7959fa69ce05bb2b712c05607943da173bde46a2d0c9eef2ab
 
     }
 
-    // line 6
+    // line 7
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -167,7 +172,7 @@ class __TwigTemplate_269949c0d7959fa69ce05bb2b712c05607943da173bde46a2d0c9eef2ab
 
     }
 
-    // line 35
+    // line 40
     public function block_titrePage($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -185,7 +190,7 @@ class __TwigTemplate_269949c0d7959fa69ce05bb2b712c05607943da173bde46a2d0c9eef2ab
 
     }
 
-    // line 38
+    // line 43
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -203,7 +208,7 @@ class __TwigTemplate_269949c0d7959fa69ce05bb2b712c05607943da173bde46a2d0c9eef2ab
 
     }
 
-    // line 41
+    // line 46
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -233,7 +238,7 @@ class __TwigTemplate_269949c0d7959fa69ce05bb2b712c05607943da173bde46a2d0c9eef2ab
 
     public function getDebugInfo()
     {
-        return array (  207 => 41,  189 => 38,  171 => 35,  153 => 6,  134 => 5,  122 => 42,  120 => 41,  116 => 39,  114 => 38,  108 => 35,  98 => 28,  91 => 24,  84 => 20,  77 => 16,  68 => 10,  64 => 9,  60 => 7,  58 => 6,  54 => 5,  48 => 1,);
+        return array (  212 => 46,  194 => 43,  176 => 40,  158 => 7,  139 => 6,  127 => 47,  125 => 46,  121 => 44,  119 => 43,  113 => 40,  103 => 33,  96 => 29,  89 => 25,  82 => 21,  73 => 15,  69 => 14,  61 => 8,  59 => 7,  55 => 6,  48 => 1,);
     }
 
     public function getSourceContext()
@@ -242,10 +247,15 @@ class __TwigTemplate_269949c0d7959fa69ce05bb2b712c05607943da173bde46a2d0c9eef2ab
 <html>
 <head>
     <meta charset=\"UTF-8\" />
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
     <title>{% block title %}Test des pizzeria{% endblock %}</title>
     {% block stylesheets %}{% endblock %}
     <script src=\"https://use.fontawesome.com/7e065ddf26.js\"></script>
+    <script src=\"https://code.jquery.com/jquery-3.3.1.slim.min.js\" integrity=\"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo\" crossorigin=\"anonymous\"></script>
+    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js\" integrity=\"sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1\" crossorigin=\"anonymous\"></script>
+    <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js\" integrity=\"sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM\" crossorigin=\"anonymous\"></script>
     <link href=\"https://fonts.googleapis.com/css?family=Exo|Indie+Flower\" rel=\"stylesheet\">
+    <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\" integrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\">
     {{ encore_entry_link_tags('app') }}
     <link rel=\"icon\" type=\"image/x-icon\" href=\"{{ asset('favicon.ico') }}\" />
 </head>

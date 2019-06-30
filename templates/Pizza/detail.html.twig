@@ -3,9 +3,19 @@
 {% block title %}{% endblock %}
 {% block titrePage %}<h2 style="text-align: center;"> la pizza {{ pizzas.nom}}</h2>{% endblock %}
 {% block body %}
+<div class="container">
+<div class="row">
+  <div class="col">
 <h3>Ingredient:<h3>
 {% for ingredients in pizzas.quantiteIngredients %}
+{% if loop.last %}
+<span>{{ ingredients.ingredient.nom}}</span>
+{% else %}
 <span>{{ ingredients.ingredient.nom }},</span>
+{% endif %}
 {% endfor %}
-<h3>Prix de Fabrication: {{prix_fabrication|number_format(2)}}</h3>
+<h3>Prix de Fabrication: {{prix_fabrication|number_format(2)}}€</h3>
+</div>
+</div>
+</div>
 {% endblock %}
